@@ -6,7 +6,12 @@
 <title>JR Earning Corner</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,sans-serif;
+}
 
 body{
   background:#f4f7fb;
@@ -16,23 +21,57 @@ body{
 header{
   background:linear-gradient(135deg,#111827,#2563eb);
   color:white;
-  text-align:center;
-  padding:55px 20px;
+  padding:18px 20px;
+  position:sticky;
+  top:0;
+  z-index:10;
 }
 
-header h1{
-  font-size:36px;
-  margin-bottom:10px;
+.nav{
+  max-width:1100px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
 }
 
-header p{
-  font-size:17px;
+.logo{
+  font-size:23px;
+  font-weight:bold;
+}
+
+.nav button{
+  border:0;
+  background:white;
+  color:#2563eb;
+  padding:10px 16px;
+  border-radius:9px;
+  font-weight:bold;
+  cursor:pointer;
 }
 
 .container{
-  max-width:950px;
+  max-width:1100px;
   margin:auto;
   padding:25px 15px;
+}
+
+.hero{
+  background:linear-gradient(135deg,#111827,#2563eb);
+  color:white;
+  padding:50px 25px;
+  border-radius:22px;
+  text-align:center;
+  margin-bottom:22px;
+}
+
+.hero h1{
+  font-size:38px;
+  margin-bottom:12px;
+}
+
+.hero p{
+  font-size:17px;
 }
 
 .card{
@@ -45,50 +84,149 @@ header p{
 
 .card h2{
   color:#2563eb;
-  margin-bottom:12px;
+  margin-bottom:15px;
 }
 
-.services{
+.grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
   gap:15px;
 }
 
-.service{
+.box{
   background:#f8fafc;
   padding:20px;
-  border-radius:14px;
+  border-radius:15px;
 }
 
-.service h3{
+.box h3{
   margin-bottom:8px;
 }
 
+.balance{
+  background:linear-gradient(135deg,#2563eb,#1e40af);
+  color:white;
+  padding:25px;
+  border-radius:18px;
+}
+
+.balance h2{
+  color:white;
+}
+
+.amount{
+  font-size:34px;
+  font-weight:bold;
+  margin-top:10px;
+}
+
 .btn{
+  border:0;
   display:inline-block;
   margin-top:15px;
-  padding:13px 22px;
+  padding:12px 20px;
   background:#2563eb;
   color:white;
   text-decoration:none;
   border-radius:10px;
   font-weight:bold;
+  cursor:pointer;
+}
+
+.btn:hover{
+  background:#1d4ed8;
+}
+
+.btn.gray{
+  background:#64748b;
+}
+
+input,select{
+  width:100%;
+  padding:13px;
+  margin:8px 0;
+  border:1px solid #d1d5db;
+  border-radius:9px;
+  outline:none;
 }
 
 .notice{
-  margin-top:15px;
-  padding:15px;
   background:#eff6ff;
   border-left:5px solid #2563eb;
+  padding:15px;
+  margin-top:15px;
   border-radius:8px;
 }
 
+table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+th,td{
+  padding:12px;
+  border-bottom:1px solid #e5e7eb;
+  text-align:left;
+}
+
+.status{
+  color:#16a34a;
+  font-weight:bold;
+}
+
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.55);
+  z-index:100;
+  align-items:center;
+  justify-content:center;
+  padding:15px;
+}
+
+.modal-box{
+  background:white;
+  width:100%;
+  max-width:420px;
+  padding:25px;
+  border-radius:18px;
+}
+
+.close{
+  float:right;
+  cursor:pointer;
+  font-size:22px;
+}
+
 footer{
-  margin-top:30px;
   background:#111827;
   color:white;
   text-align:center;
-  padding:25px 15px;
+  padding:30px 15px;
+  margin-top:30px;
+}
+
+footer p{
+  margin:7px;
+}
+
+.hidden{
+  display:none;
+}
+
+@media(max-width:600px){
+  .hero h1{
+    font-size:30px;
+  }
+
+  table{
+    font-size:13px;
+  }
+
+  .amount{
+    font-size:28px;
+  }
 }
 </style>
 </head>
@@ -96,40 +234,278 @@ footer{
 <body>
 
 <header>
-<h1>JR Earning Corner</h1>
-<p>অনলাইন কাজ ও বৈধ ডিজিটাল সেবার তথ্য</p>
+  <div class="nav">
+    <div class="logo">JR Earning Corner</div>
+    <button onclick="openLogin()">Login / Register</button>
+  </div>
 </header>
 
 <div class="container">
 
-<div class="card">
-<h2>স্বাগতম 👋</h2>
-<p>
-JR Earning Corner-এ আপনাকে স্বাগতম।
-এখানে অনলাইন কাজ, ডিজিটাল সেবা এবং প্রয়োজনীয় তথ্য
-সহজভাবে দেওয়া হবে।
-</p>
+  <!-- HOME -->
+  <section class="hero">
+    <h1>JR Earning Corner</h1>
+    <p>অনলাইন কাজ ও বৈধ ডিজিটাল সেবার তথ্য</p>
+    <button class="btn" onclick="openLogin()">শুরু করুন</button>
+  </section>
 
-<div class="notice">
-⚠️ কোনো কাজ বা পেমেন্ট করার আগে তার শর্ত ও বৈধতা যাচাই করুন।
+  <!-- WELCOME -->
+  <div class="card">
+    <h2>স্বাগতম 👋</h2>
+    <p>
+      JR Earning Corner-এ আপনাকে স্বাগতম।
+      এখানে অনলাইন কাজ, ডিজিটাল সেবা এবং প্রয়োজনীয়
+      তথ্য সহজভাবে দেওয়া হবে।
+    </p>
+
+    <div class="notice">
+      ⚠️ কোনো কাজ বা পেমেন্ট করার আগে শর্ত,
+      পরিচয় এবং বৈধতা যাচাই করুন।
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <div class="card">
+    <h2>আমাদের সেবা 💼</h2>
+
+    <div class="grid">
+
+      <div class="box">
+        <h3>💻 অনলাইন সার্ভিস</h3>
+        <p>বিভিন্ন বৈধ ডিজিটাল সেবা সম্পর্কে তথ্য।</p>
+      </div>
+
+      <div class="box">
+        <h3>📚 কাজের গাইড</h3>
+        <p>অনলাইনে বৈধভাবে কাজ শেখার নির্দেশনা।</p>
+      </div>
+
+      <div class="box">
+        <h3>📱 ডিজিটাল সাপোর্ট</h3>
+        <p>ডিজিটাল কাজ ও ওয়েবসাইট ব্যবহারের সহায়তা।</p>
+      </div>
+
+      <div class="box">
+        <h3>🛡️ নিরাপত্তা</h3>
+        <p>অনলাইন প্রতারণা থেকে নিরাপদ থাকার তথ্য।</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div class="card">
+    <h2>👤 User Dashboard</h2>
+
+    <div class="balance">
+      <h2>বর্তমান ব্যালেন্স</h2>
+      <div class="amount">৳0.00</div>
+      <button class="btn" onclick="openWithdraw()">
+        Withdraw
+      </button>
+    </div>
+  </div>
+
+  <!-- TASKS -->
+  <div class="card">
+    <h2>📋 Available Tasks</h2>
+
+    <div class="grid">
+
+      <div class="box">
+        <h3>Task #001</h3>
+        <p>বৈধ ডিজিটাল কাজ সম্পন্ন করুন।</p>
+        <strong>Reward: ৳10</strong><br>
+        <button class="btn" onclick="alert('Task details backend থেকে আসবে।')">
+          View Task
+        </button>
+      </div>
+
+      <div class="box">
+        <h3>Task #002</h3>
+        <p>নির্ধারিত নির্দেশনা অনুসরণ করুন।</p>
+        <strong>Reward: ৳20</strong><br>
+        <button class="btn" onclick="alert('Task details backend থেকে আসবে।')">
+          View Task
+        </button>
+      </div>
+
+      <div class="box">
+        <h3>Task #003</h3>
+        <p>যোগ্য কাজ সম্পন্ন করে reward অর্জন করুন।</p>
+        <strong>Reward: ৳30</strong><br>
+        <button class="btn" onclick="alert('Task details backend থেকে আসবে।')">
+          View Task
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TRANSACTION -->
+  <div class="card">
+    <h2>📜 Transaction History</h2>
+
+    <table>
+      <tr>
+        <th>তারিখ</th>
+        <th>ধরণ</th>
+        <th>পরিমাণ</th>
+        <th>স্ট্যাটাস</th>
+      </tr>
+
+      <tr>
+        <td>--</td>
+        <td>--</td>
+        <td>৳0.00</td>
+        <td class="status">No Data</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- WITHDRAW INFO -->
+  <div class="card">
+    <h2>💳 Withdraw</h2>
+    <p>
+      Withdraw করার আগে আপনার অ্যাকাউন্টের তথ্য সঠিকভাবে
+      যাচাই করুন। বাস্তব payment চালুর জন্য অনুমোদিত
+      payment provider ও backend প্রয়োজন।
+    </p>
+
+    <button class="btn" onclick="openWithdraw()">
+      Withdraw Request
+    </button>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="card">
+    <h2>📞 যোগাযোগ</h2>
+    <p>সাপোর্টের জন্য আপনার Email বা WhatsApp তথ্য এখানে যোগ করুন।</p>
+
+    <a class="btn" href="mailto:your@email.com">
+      Email Support
+    </a>
+  </div>
+
+  <!-- TERMS -->
+  <div class="card">
+    <h2>📄 Terms & Privacy</h2>
+    <p>
+      ব্যবহারকারীর তথ্য নিরাপদ রাখা এবং বৈধ ডিজিটাল
+      সেবা প্রদান করা আমাদের লক্ষ্য। কোনো কাজ বা
+      payment করার আগে শর্তাবলি যাচাই করুন।
+    </p>
+  </div>
+
 </div>
+
+<!-- LOGIN MODAL -->
+<div class="modal" id="loginModal">
+  <div class="modal-box">
+
+    <span class="close" onclick="closeLogin()">×</span>
+
+    <h2>👤 Login / Register</h2>
+
+    <input type="text" placeholder="আপনার নাম">
+
+    <input type="email" placeholder="Email">
+
+    <input type="password" placeholder="Password">
+
+    <button class="btn" onclick="demoLogin()">
+      Continue
+    </button>
+
+    <div class="notice">
+      এটি বর্তমানে Demo UI। আসল Login চালুর জন্য
+      secure backend/database প্রয়োজন।
+    </div>
+
+  </div>
 </div>
 
-<div class="card">
-<h2>আমাদের সেবা 💼</h2>
+<!-- WITHDRAW MODAL -->
+<div class="modal" id="withdrawModal">
+  <div class="modal-box">
 
-<div class="services">
+    <span class="close" onclick="closeWithdraw()">×</span>
 
-<div class="service">
-<h3>💻 অনলাইন সার্ভিস</h3>
-<p>বিভিন্ন বৈধ ডিজিটাল সেবা সম্পর্কে তথ্য।</p>
+    <h2>💳 Withdraw Request</h2>
+
+    <select>
+      <option>Payment Method নির্বাচন করুন</option>
+      <option>bKash</option>
+      <option>Nagad</option>
+      <option>Bank</option>
+    </select>
+
+    <input type="text" placeholder="Account Number">
+
+    <input type="number" placeholder="Amount">
+
+    <button class="btn" onclick="demoWithdraw()">
+      Submit Request
+    </button>
+
+    <div class="notice">
+      ⚠️ এটি শুধু UI। আসল টাকা পাঠানো হবে না,
+      যতক্ষণ না বৈধ payment backend সংযুক্ত করা হয়।
+    </div>
+
+  </div>
 </div>
 
-<div class="service">
-<h3>📚 কাজের গাইড</h3>
-<p>অনলাইনে বৈধভাবে কাজ শেখার নির্দেশনা।</p>
-</div>
+<footer>
+  <p><strong>JR Earning Corner</strong></p>
+  <p>অনলাইন কাজ ও বৈধ ডিজিটাল সেবা</p>
+  <p>© 2026 All Rights Reserved</p>
+</footer>
 
-<div class="service">
-<h3>📱 ডিজিটাল সাপোর্ট</h3>
-<p>ডিজিটাল
+<script>
+
+function openLogin(){
+  document.getElementById("loginModal").style.display="flex";
+}
+
+function closeLogin(){
+  document.getElementById("loginModal").style.display="none";
+}
+
+function openWithdraw(){
+  document.getElementById("withdrawModal").style.display="flex";
+}
+
+function closeWithdraw(){
+  document.getElementById("withdrawModal").style.display="none";
+}
+
+function demoLogin(){
+  alert("Demo Login সফল। আসল Login চালুর জন্য backend প্রয়োজন।");
+  closeLogin();
+}
+
+function demoWithdraw(){
+  alert("Withdraw Request Demo হিসেবে নেওয়া হয়েছে। আসল payment চালু নেই।");
+  closeWithdraw();
+}
+
+window.onclick=function(event){
+
+  let login=document.getElementById("loginModal");
+  let withdraw=document.getElementById("withdrawModal");
+
+  if(event.target===login){
+    closeLogin();
+  }
+
+  if(event.target===withdraw){
+    closeWithdraw();
+  }
+
+}
+
+</script>
+
+</body>
+  </html>
