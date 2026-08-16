@@ -200,7 +200,10 @@ doc,
 setDoc,
 serverTimestamp,
 getDoc
+getDocs,
+collection
 }
+
 from "https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore.js";
 
 
@@ -446,6 +449,51 @@ document.getElementById("loginModal").style.display="none";
   }
 
 };
+  async function loadAdminUsers(){
+
+  const userList = document.getElementById("adminUserList");
+
+  if(!userList) return;
+
+  userList.innerHTML = "User list loading...";
+
+  try{
+
+    const usersSnapshot = await getDocs(
+      collection(db, "users")
+    );
+
+    if(usersSnapshot.empty){
+      userList.innerHTML = "কোনো user পাওয়া যায়নি।";
+      return;
+    }
+
+    userList.innerHTML = "";
+
+    usersSnapshot.forEach((userDoc) => {
+
+      const data = userDoc.data();
+
+      const div = document.createElement("div");
+
+      div.className = "box";
+
+      div.innerHTML = `
+        <strong>User UID:</strong> ${userDoc.id}<br>
+        <strong>Email:</strong> ${data.email || "নেই"}
+      `;
+
+      userList.appendChild(div);
+
+    });
+
+  }catch(error){
+
+    userList.innerHTML =
+      "User list load করা যায়নি: " + error.message;
+
+  }
+  }
 </script>
   
 <!-- ADMIN PANEL -->
