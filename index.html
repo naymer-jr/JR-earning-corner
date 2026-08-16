@@ -186,7 +186,8 @@ import {
 getFirestore,
 doc,
 setDoc,
-serverTimestamp
+serverTimestamp,
+getDoc
 }
 from "https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore.js";
 
@@ -313,7 +314,7 @@ message.innerText="Register ব্যর্থ: "+error.message;
 
 /* USER STATUS */
 
-onAuthStateChanged(auth,(user)=>{
+onAuthStateChanged(auth,async (user)=>{
 
 const loginBtn=document.getElementById("loginBtn");
 
