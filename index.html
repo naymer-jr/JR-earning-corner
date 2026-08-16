@@ -404,13 +404,25 @@ document.getElementById("loginModal").style.display="none";
 
   try{
 
-    await setDoc(
-      doc(db, "users", user.uid, "completedTasks", taskId),
-      {
-        taskId: taskId,
-        completedAt: serverTimestamp()
-      }
+    const taskRef = doc(
+      db,
+      "users",
+      user.uid,
+      "completedTasks",
+      taskId
     );
+
+    const existingTask = await getDoc(taskRef);
+
+    if(existingTask.exists()){
+      alert("এই Task আগে Complete করা হয়েছে।");
+      return;
+    }
+
+    await setDoc(taskRef,{
+      taskId: taskId,
+      completedAt: serverTimestamp()
+    });
 
     alert("Task সম্পন্ন হিসেবে সংরক্ষণ হয়েছে ✅");
 
