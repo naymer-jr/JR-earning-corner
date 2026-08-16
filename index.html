@@ -463,6 +463,7 @@ document.getElementById("loginModal").style.display="none";
     const usersSnapshot = await getDocs(
       collection(db, "users")
     );
+    alert("Users পাওয়া গেছে: " + usersSnapshot.size);
 
     if(usersSnapshot.empty){
       userList.innerHTML = "কোনো user পাওয়া যায়নি।";
