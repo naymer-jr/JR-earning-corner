@@ -337,6 +337,19 @@ const userArea=document.getElementById("userArea");
 const userEmail=document.getElementById("userEmail");
 
 if(user){
+  const adminDoc = await getDoc(
+  doc(db, "admins", user.uid)
+);
+
+if(adminDoc.exists()){
+
+  document.getElementById("adminPanel").style.display = "block";
+
+}else{
+
+  document.getElementById("adminPanel").style.display = "none";
+
+}
 const userDoc = await getDoc(
   doc(db, "users", user.uid)
 );
