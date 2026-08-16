@@ -392,6 +392,35 @@ document.getElementById("loginModal").style.display="none";
 
 };
 
+  window.completeTask = async function(taskId){
+
+  const user = auth.currentUser;
+
+  if(!user){
+    alert("আগে Login করুন।");
+    openLogin();
+    return;
+  }
+
+  try{
+
+    await setDoc(
+      doc(db, "users", user.uid, "completedTasks", taskId),
+      {
+        taskId: taskId,
+        completedAt: serverTimestamp()
+      }
+    );
+
+    alert("Task সম্পন্ন হিসেবে সংরক্ষণ হয়েছে ✅");
+
+  }catch(error){
+
+    alert("সমস্যা হয়েছে: " + error.message);
+
+  }
+
+};
 </script>
 
 </body>
