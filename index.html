@@ -133,10 +133,6 @@ header{
   cursor:pointer;
 }
 
-.btn:hover{
-  background:#1d4ed8;
-}
-
 input{
   width:100%;
   padding:13px;
@@ -210,420 +206,51 @@ footer p{
 <body>
 
 <header>
-  <div class="nav">
-    <div class="logo">JR Earning Corner</div>
+<div class="nav">
 
-    <div>
-      <button id="loginBtn" onclick="openLogin()">Login / Register</button>
-      <button id="logoutBtn" onclick="logout()" style="display:none;">
-        Logout
-      </button>
-    </div>
-  </div>
+<div class="logo">JR Earning Corner</div>
+
+<div>
+
+<button id="loginBtn" onclick="openLogin()">
+Login / Register
+</button>
+
+<button id="logoutBtn"
+onclick="logout()"
+style="display:none;">
+Logout
+</button>
+
+</div>
+
+</div>
 </header>
+
 
 <div class="container">
 
 <section class="hero">
-  <h1>JR Earning Corner</h1>
-  <p>অনলাইন কাজ ও বৈধ ডিজিটাল সেবার তথ্য</p>
 
-  <button class="btn" onclick="openLogin()">
-    শুরু করুন
-  </button>
+<h1>JR Earning Corner</h1>
+
+<p>
+অনলাইন কাজ ও বৈধ ডিজিটাল সেবার তথ্য
+</p>
+
+<button class="btn"
+onclick="openLogin()">
+শুরু করুন
+</button>
+
 </section>
 
-<div class="card">
-  <h2>স্বাগতম 👋</h2>
-
-  <p>
-    JR Earning Corner-এ আপনাকে স্বাগতম।
-    এখানে অনলাইন কাজ, ডিজিটাল সেবা এবং প্রয়োজনীয়
-    তথ্য সহজভাবে দেওয়া হবে।
-  </p>
-
-  <div class="notice">
-    ⚠️ কোনো কাজ বা পেমেন্ট করার আগে শর্ত ও বৈধতা যাচাই করুন।
-  </div>
-</div>
-
-<div class="card">
-  <h2>আমাদের সেবা 💼</h2>
-
-  <div class="grid">
-
-    <div class="box">
-      <h3>💻 অনলাইন সার্ভিস</h3>
-      <p>বিভিন্ন বৈধ ডিজিটাল সেবা সম্পর্কে তথ্য।</p>
-    </div>
-
-    <div class="box">
-      <h3>📚 কাজের গাইড</h3>
-      <p>অনলাইনে বৈধভাবে কাজ শেখার নির্দেশনা।</p>
-    </div>
-
-    <div class="box">
-      <h3>📱 ডিজিটাল সাপোর্ট</h3>
-      <p>ডিজিটাল কাজ ও ওয়েবসাইট ব্যবহারের সহায়তা।</p>
-    </div>
-
-    <div class="box">
-      <h3>🛡️ নিরাপত্তা</h3>
-      <p>অনলাইন প্রতারণা থেকে নিরাপদ থাকার তথ্য।</p>
-    </div>
-
-  </div>
-</div>
-
-<!-- USER AREA -->
-
-<div class="card" id="userArea">
-
-  <h2>👤 আপনার Account</h2>
-
-  <p>
-    Login করা হয়েছে।
-  </p>
-
-  <p style="margin-top:10px;">
-    Email:
-    <strong id="userEmail"></strong>
-  </p>
-
-  <div class="balance" style="margin-top:20px;">
-
-    <h2>বর্তমান ব্যালেন্স</h2>
-
-    <div class="amount">
-      ৳0.00
-    </div>
-
-  </div>
-
-</div>
 
 <div class="card">
 
-<h2>📋 Available Tasks</h2>
-
-<div class="grid">
-
-<div class="box">
-<h3>Task #001</h3>
-<p>বৈধ ডিজিটাল কাজ সম্পন্ন করুন।</p>
-<strong>Reward: ৳10</strong>
-</div>
-
-<div class="box">
-<h3>Task #002</h3>
-<p>নির্ধারিত নির্দেশনা অনুসরণ করুন।</p>
-<strong>Reward: ৳20</strong>
-</div>
-
-<div class="box">
-<h3>Task #003</h3>
-<p>যোগ্য কাজ সম্পন্ন করুন।</p>
-<strong>Reward: ৳30</strong>
-</div>
-
-</div>
-
-</div>
-
-<div class="card">
-
-<h2>📞 যোগাযোগ</h2>
+<h2>স্বাগতম 👋</h2>
 
 <p>
-সাপোর্টের জন্য আমাদের সাথে যোগাযোগ করুন।
-</p>
-
-<a class="btn" href="mailto:your@email.com">
-Email Support
-</a>
-
-</div>
-
-</div>
-
-<!-- LOGIN MODAL -->
-
-<div class="modal" id="loginModal">
-
-<div class="modal-box">
-
-<span class="close" onclick="closeLogin()">×</span>
-
-<h2 id="formTitle">
-👤 Login
-</h2>
-
-<input
-  type="email"
-  id="email"
-  placeholder="Email"
-/>
-
-<input
-  type="password"
-  id="password"
-  placeholder="Password"
-/>
-
-<button
-  class="btn"
-  onclick="loginUser()"
-  id="loginButton">
-  Login
-</button>
-
-<button
-  class="btn"
-  onclick="registerUser()">
-  Register
-</button>
-
-<div class="notice" id="message">
-  Email ও Password দিয়ে Login অথবা Register করুন।
-</div>
-
-</div>
-
-</div>
-
-<footer>
-
-<p><strong>JR Earning Corner</strong></p>
-
-<p>
-অনলাইন কাজ ও বৈধ ডিজিটাল সেবা
-</p>
-
-<p>
-© 2026 All Rights Reserved
-</p>
-
-</footer>
-
-<!-- FIREBASE -->
-
-<script type="module">
-
-import { initializeApp }
-from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
-
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-  signOut
-}
-from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
-
-
-const firebaseConfig = {
-
-apiKey:"AIzaSyDEtGNYqpRavpfMNMWdgq7MjOVRWA0Y3ew",
-
-authDomain:"jr-earning-corner.firebaseapp.com",
-
-projectId:"jr-earning-corner",
-
-storageBucket:"jr-earning-corner.firebasestorage.app",
-
-messagingSenderId:"786921929161",
-
-appId:"1:786921929161:web:c70d69701cb1fecd861018",
-
-measurementId:"G-NVKCEWPNFX"
-
-};
-
-
-const app = initializeApp(firebaseConfig);
-
-const auth = getAuth(app);
-
-
-/* LOGIN */
-
-window.loginUser = async function(){
-
-const email =
-document.getElementById("email").value;
-
-const password =
-document.getElementById("password").value;
-
-const message =
-document.getElementById("message");
-
-if(!email || !password){
-
-message.innerText =
-"Email এবং Password দিন।";
-
-return;
-
-}
-
-try{
-
-await signInWithEmailAndPassword(
-auth,
-email,
-password
-);
-
-message.innerText =
-"Login সফল হয়েছে ✅";
-
-closeLogin();
-
-}catch(error){
-
-message.innerText =
-"Login ব্যর্থ: " + error.message;
-
-}
-
-};
-
-
-/* REGISTER */
-
-window.registerUser = async function(){
-
-const email =
-document.getElementById("email").value;
-
-const password =
-document.getElementById("password").value;
-
-const message =
-document.getElementById("message");
-
-if(!email || !password){
-
-message.innerText =
-"Email এবং Password দিন।";
-
-return;
-
-}
-
-if(password.length < 6){
-
-message.innerText =
-"Password কমপক্ষে ৬ অক্ষরের হতে হবে।";
-
-return;
-
-}
-
-try{
-
-await createUserWithEmailAndPassword(
-auth,
-email,
-password
-);
-
-message.innerText =
-"Register সফল হয়েছে ✅";
-
-closeLogin();
-
-}catch(error){
-
-message.innerText =
-"Register ব্যর্থ: " + error.message;
-
-}
-
-};
-
-
-/* AUTH STATE */
-
-onAuthStateChanged(auth,(user)=>{
-
-const loginBtn =
-document.getElementById("loginBtn");
-
-const logoutBtn =
-document.getElementById("logoutBtn");
-
-const userArea =
-document.getElementById("userArea");
-
-const userEmail =
-document.getElementById("userEmail");
-
-if(user){
-
-loginBtn.style.display="none";
-
-logoutBtn.style.display="inline-block";
-
-userArea.style.display="block";
-
-userEmail.innerText =
-user.email;
-
-}else{
-
-loginBtn.style.display="inline-block";
-
-logoutBtn.style.display="none";
-
-userArea.style.display="none";
-
-}
-
-});
-
-
-/* LOGOUT */
-
-window.logout = async function(){
-
-try{
-
-await signOut(auth);
-
-alert("Logout সফল হয়েছে।");
-
-}catch(error){
-
-alert(error.message);
-
-}
-
-};
-
-
-/* MODAL */
-
-window.openLogin=function(){
-
-document.getElementById(
-"loginModal"
-).style.display="flex";
-
-};
-
-
-window.closeLogin=function(){
-
-document.getElementById(
-"loginModal"
-).style.display="none";
-
-};
-
-</script>
-
-</body>
-        </html>
+JR Earning Corner-এ আপনাকে স্বাগতম।
+এখানে অনলাইন কাজ, ডিজিটাল সেবা এবং প্রয়োজনীয়
+তথ্য সহজভাবে দেওয়া
