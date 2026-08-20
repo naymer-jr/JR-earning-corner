@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://naymer-jr.github.io/JR-earning-corner/sitemap.xml
