@@ -3,1416 +3,388 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>JR Earning Corner</title>
-
 <style>
 *{box-sizing:border-box;font-family:Arial,sans-serif}
 body{margin:0;background:#f4f7fb;color:#172033}
-header{background:#111827;color:white;padding:18px}
+header{background:#111827;color:#fff;padding:18px}
 .nav{max-width:1100px;margin:auto;display:flex;justify-content:space-between;align-items:center}
 .logo{font-size:22px;font-weight:bold}
 button,.btn{border:0;border-radius:9px;padding:11px 17px;cursor:pointer;font-weight:bold}
-header button{background:white;color:#2563eb}
+header button{background:#fff;color:#2563eb}
 .container{max-width:1100px;margin:auto;padding:20px 15px}
-.hero{background:linear-gradient(135deg,#111827,#2563eb);color:white;text-align:center;padding:50px 20px;border-radius:20px}
+.hero{background:linear-gradient(135deg,#111827,#2563eb);color:#fff;text-align:center;padding:50px 20px;border-radius:20px}
 .hero h1{font-size:36px}
-.btn{background:#2563eb;color:white;margin-top:12px}
-.card{background:white;padding:24px;margin:18px 0;border-radius:17px;box-shadow:0 4px 18px #0001}
+.btn{background:#2563eb;color:#fff;margin-top:12px}
+.card{background:#fff;padding:24px;margin:18px 0;border-radius:17px;box-shadow:0 4px 18px #0001}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:15px}
-.box{background:#f8fafc;padding:20px;border-radius:14px}
-.balance{background:#2563eb;color:white;padding:20px;border-radius:15px}
+.box{background:#f8fafc;padding:20px;border-radius:14px;margin-bottom:10px}
+.balance{background:#2563eb;color:#fff;padding:20px;border-radius:15px}
 .amount{font-size:30px;font-weight:bold;margin-top:8px}
-input,select{
-width:100%;
-padding:13px;
-margin:7px 0;
-border:1px solid #ddd;
-border-radius:8px
-}
-.modal{
-display:none;
-position:fixed;
-inset:0;
-background:#0009;
-align-items:center;
-justify-content:center;
-padding:15px;
-z-index:1000
-}
-.modal-box{
-background:white;
-width:100%;
-max-width:400px;
-padding:25px;
-border-radius:17px;
-max-height:90vh;
-overflow:auto
-}
+input,select{width:100%;padding:13px;margin:7px 0;border:1px solid #ddd;border-radius:8px}
+.modal{display:none;position:fixed;inset:0;background:#0009;align-items:center;justify-content:center;padding:15px;z-index:1000}
+.modal-box{background:#fff;width:100%;max-width:400px;padding:25px;border-radius:17px;max-height:90vh;overflow:auto}
 .close{float:right;font-size:24px;cursor:pointer}
-#userArea{display:none}
+#userArea,#adminPanel{display:none}
 .notice{background:#eff6ff;padding:13px;margin-top:12px;border-radius:8px}
-.success{background:#ecfdf5;color:#065f46;padding:12px;border-radius:8px;margin-top:10px}
-.warning{background:#fff7ed;color:#9a3412;padding:12px;border-radius:8px;margin-top:10px}
-footer{background:#111827;color:white;text-align:center;padding:25px;margin-top:30px}
-.action-btn{
-width:100%;
-margin-top:10px;
-background:#2563eb;
-color:white
-}
-.withdraw-btn{
-background:#16a34a;
-color:white
-}
+footer{background:#111827;color:#fff;text-align:center;padding:25px;margin-top:30px}
+.action-btn{width:100%;margin-top:10px;background:#2563eb;color:#fff}
+.withdraw-btn{background:#16a34a;color:#fff}
 </style>
 </head>
-
 <body>
 
 <header>
 <div class="nav">
-
 <div class="logo">JR Earning Corner</div>
-
 <div>
 <button id="loginBtn" onclick="openLogin()">Login / Register</button>
-
-<button id="logoutBtn"
-onclick="logout()"
-style="display:none">
-Logout
-</button>
+<button id="logoutBtn" onclick="logout()" style="display:none">Logout</button>
 </div>
-
 </div>
 </header>
-
 
 <div class="container">
 
 <section class="hero">
-
 <h1>JR Earning Corner</h1>
-
-<p>
-অনলাইন কাজ ও বৈধ ডিজিটাল সেবার তথ্য
-</p>
-
-<button class="btn" onclick="openLogin()">
-শুরু করুন
-</button>
-
+<p>অনলাইন কাজ ও বৈধ ডিজিটাল সেবার তথ্য</p>
+<button class="btn" onclick="openLogin()">শুরু করুন</button>
 </section>
 
-
 <div class="card">
-
 <h2>স্বাগতম 👋</h2>
-
-<p>
-JR Earning Corner-এ আপনাকে স্বাগতম।
-এখানে অনলাইন কাজ, ডিজিটাল সেবা এবং প্রয়োজনীয় তথ্য দেওয়া হবে।
-</p>
-
-<div class="notice">
-⚠️ কোনো কাজ বা পেমেন্ট করার আগে শর্ত ও বৈধতা যাচাই করুন।
+<p>JR Earning Corner-এ আপনাকে স্বাগতম। এখানে অনলাইন কাজ, ডিজিটাল সেবা এবং প্রয়োজনীয় তথ্য দেওয়া হবে।</p>
+<div class="notice">⚠️ কোনো কাজ বা পেমেন্ট করার আগে শর্ত ও বৈধতা যাচাই করুন।</div>
 </div>
-
-</div>
-
 
 <div class="card">
-
 <h2>আমাদের সেবা 💼</h2>
-
 <div class="grid">
-
-<div class="box">
-<h3>💻 অনলাইন সার্ভিস</h3>
-<p>বৈধ ডিজিটাল সেবা সম্পর্কে তথ্য।</p>
+<div class="box"><h3>💻 অনলাইন সার্ভিস</h3><p>বৈধ ডিজিটাল সেবা সম্পর্কে তথ্য।</p></div>
+<div class="box"><h3>📚 কাজের গাইড</h3><p>অনলাইনে বৈধভাবে কাজ শেখার নির্দেশনা।</p></div>
+<div class="box"><h3>📱 ডিজিটাল সাপোর্ট</h3><p>ডিজিটাল কাজ ও ওয়েবসাইট ব্যবহারের সহায়তা।</p></div>
+<div class="box"><h3>🛡️ নিরাপত্তা</h3><p>অনলাইন প্রতারণা থেকে নিরাপদ থাকার তথ্য।</p></div>
 </div>
-
-<div class="box">
-<h3>📚 কাজের গাইড</h3>
-<p>অনলাইনে বৈধভাবে কাজ শেখার নির্দেশনা।</p>
 </div>
-
-<div class="box">
-<h3>📱 ডিজিটাল সাপোর্ট</h3>
-<p>ডিজিটাল কাজ ও ওয়েবসাইট ব্যবহারের সহায়তা।</p>
-</div>
-
-<div class="box">
-<h3>🛡️ নিরাপত্তা</h3>
-<p>অনলাইন প্রতারণা থেকে নিরাপদ থাকার তথ্য।</p>
-</div>
-
-</div>
-
-</div>
-
-
-<!-- USER AREA -->
 
 <div class="card" id="userArea">
-
 <h2>👤 আপনার Account</h2>
-
 <p>Login করা হয়েছে ✅</p>
-
-<p>
-Email:
-<strong id="userEmail"></strong>
-</p>
-
-
+<p>Email: <strong id="userEmail"></strong></p>
 <div class="balance">
-
 <h3>বর্তমান ব্যালেন্স</h3>
-
-<div class="amount">
-৳0.00
+<div class="amount">৳0.00</div>
 </div>
-
-</div>
-
-
-<!-- PAYMENT BUTTONS -->
 
 <div class="grid" style="margin-top:15px">
-
 <div class="box">
-
 <h3>💳 Deposit</h3>
-
-<p>
-Minimum Deposit: <strong>৳100</strong>
-</p>
-
-<button
-class="btn action-btn"
-onclick="openDeposit()">
-Deposit করুন
-</button>
-
+<p>Minimum Deposit: <strong>৳100</strong></p>
+<button class="btn action-btn" onclick="openDeposit()">Deposit করুন</button>
 </div>
-
-
 <div class="box">
-
 <h3>💰 Withdraw</h3>
-
-<p>
-আপনার ব্যালেন্স থেকে Withdraw Request করুন।
-</p>
-
-<button
-class="btn action-btn withdraw-btn"
-onclick="openWithdraw()">
-Withdraw করুন
-</button>
-
+<p>আপনার ব্যালেন্স থেকে Withdraw Request করুন।</p>
+<button class="btn action-btn withdraw-btn" onclick="openWithdraw()">Withdraw করুন</button>
 </div>
-
 </div>
-
 </div>
-
-
-<!-- TASKS -->
 
 <div class="card">
-
 <h2>📋 Available Tasks</h2>
-
 <div class="grid">
-
-
-<div class="box">
-
-<h3>Task #001</h3>
-
-<br>
-
-<button
-class="btn"
-onclick="completeTask('task001')">
-Complete Task
-</button>
-
-<p>
-বৈধ ডিজিটাল কাজের নির্দেশনা অনুসরণ করুন।
-</p>
-
-<strong>
-Reward: ৳10
-</strong>
-
+<div class="box"><h3>Task #001</h3><button class="btn" onclick="completeTask('task001')">Complete Task</button><p>বৈধ ডিজিটাল কাজের নির্দেশনা অনুসরণ করুন।</p><strong>Reward: ৳10</strong></div>
+<div class="box"><h3>Task #002</h3><button class="btn" onclick="completeTask('task002')">Complete Task</button><p>নির্ধারিত ডিজিটাল কাজ সম্পন্ন করুন।</p><strong>Reward: ৳20</strong></div>
+<div class="box"><h3>Task #003</h3><button class="btn" onclick="completeTask('task003')">Complete Task</button><p>যোগ্য কাজের নির্দেশনা অনুসরণ করুন।</p><strong>Reward: ৳30</strong></div>
+</div>
+</div>
 </div>
 
-
-<div class="box">
-
-<h3>Task #002</h3>
-
-<br>
-
-<button
-class="btn"
-onclick="completeTask('task002')">
-Complete Task
-</button>
-
-<p>
-নির্ধারিত ডিজিটাল কাজ সম্পন্ন করুন।
-</p>
-
-<strong>
-Reward: ৳20
-</strong>
-
-</div>
-
-
-<div class="box">
-
-<h3>Task #003</h3>
-
-<br>
-
-<button
-class="btn"
-onclick="completeTask('task003')">
-Complete Task
-</button>
-
-<p>
-যোগ্য কাজের নির্দেশনা অনুসরণ করুন।
-</p>
-
-<strong>
-Reward: ৳30
-</strong>
-
-</div>
-
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- LOGIN MODAL -->
-
+<!-- LOGIN -->
 <div class="modal" id="loginModal">
-
 <div class="modal-box">
-
-<span
-class="close"
-onclick="closeLogin()">
-×
-</span>
-
+<span class="close" onclick="closeLogin()">×</span>
 <h2>👤 Account</h2>
-
-<input
-id="email"
-type="email"
-placeholder="Email">
-
-<input
-id="password"
-type="password"
-placeholder="Password">
-
-<button
-class="btn"
-onclick="loginUser()">
-Login
-</button>
-
-<button
-class="btn"
-onclick="registerUser()">
-Register
-</button>
-
-<div
-class="notice"
-id="message">
-
-Email ও Password দিয়ে Login অথবা Register করুন।
-
+<input id="email" type="email" placeholder="Email">
+<input id="password" type="password" placeholder="Password">
+<button class="btn" onclick="loginUser()">Login</button>
+<button class="btn" onclick="registerUser()">Register</button>
+<div class="notice" id="message">Email ও Password দিয়ে Login অথবা Register করুন।</div>
+</div>
 </div>
 
-</div>
-
-</div>
-
-
-<!-- DEPOSIT MODAL -->
-
+<!-- DEPOSIT -->
 <div class="modal" id="depositModal">
-
 <div class="modal-box">
-
-<span
-class="close"
-onclick="closeDeposit()">
-×
-</span>
-
+<span class="close" onclick="closeDeposit()">×</span>
 <h2>💳 Deposit</h2>
-
-<div class="notice">
-
-<strong>Minimum Deposit: ৳100</strong>
-
-<br><br>
-
-bKash অথবা Nagad নির্বাচন করুন এবং আপনার পেমেন্টের Transaction ID দিন।
-
+<div class="notice"><strong>Minimum Deposit: ৳100</strong><br><br>bKash অথবা Nagad নির্বাচন করুন এবং আপনার পেমেন্টের Transaction ID দিন।</div>
+<label>Payment Method</label>
+<select id="depositMethod"><option value="bKash">bKash</option><option value="Nagad">Nagad</option></select>
+<label>Deposit Amount</label>
+<input id="depositAmount" type="number" min="100" placeholder="Minimum ৳100">
+<label>Transaction ID</label>
+<input id="depositTransactionId" type="text" placeholder="Transaction ID লিখুন">
+<button class="btn action-btn" onclick="submitDeposit()">Deposit Request পাঠান</button>
+<div id="depositMessage" class="notice" style="display:none"></div>
+</div>
 </div>
 
-
-<label>
-Payment Method
-</label>
-
-<select id="depositMethod">
-
-<option value="bKash">
-bKash
-</option>
-
-<option value="Nagad">
-Nagad
-</option>
-
-</select>
-
-
-<label>
-Deposit Amount
-</label>
-
-<input
-id="depositAmount"
-type="number"
-min="100"
-placeholder="Minimum ৳100">
-
-
-<label>
-Transaction ID
-</label>
-
-<input
-id="depositTransactionId"
-type="text"
-placeholder="Transaction ID লিখুন">
-
-
-<button
-class="btn action-btn"
-onclick="submitDeposit()">
-
-Deposit Request পাঠান
-
-</button>
-
-
-<div
-id="depositMessage"
-class="notice"
-style="display:none">
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- WITHDRAW MODAL -->
-
+<!-- WITHDRAW -->
 <div class="modal" id="withdrawModal">
-
 <div class="modal-box">
-
-<span
-class="close"
-onclick="closeWithdraw()">
-×
-</span>
-
+<span class="close" onclick="closeWithdraw()">×</span>
 <h2>💰 Withdraw</h2>
-
-
-<label>
-Payment Method
-</label>
-
-<select id="withdrawMethod">
-
-<option value="bKash">
-bKash
-</option>
-
-<option value="Nagad">
-Nagad
-</option>
-
-</select>
-
-
-<label>
-Account Number
-</label>
-
-<input
-id="withdrawAccount"
-type="tel"
-placeholder="bKash/Nagad নম্বর">
-
-
-<label>
-Withdraw Amount
-</label>
-
-<input
-id="withdrawAmount"
-type="number"
-min="1"
-placeholder="Amount">
-
-
-<button
-class="btn withdraw-btn action-btn"
-onclick="submitWithdraw()">
-
-Withdraw Request পাঠান
-
-</button>
-
-
-<div
-id="withdrawMessage"
-class="notice"
-style="display:none">
-
+<label>Payment Method</label>
+<select id="withdrawMethod"><option value="bKash">bKash</option><option value="Nagad">Nagad</option></select>
+<label>Account Number</label>
+<input id="withdrawAccount" type="tel" placeholder="bKash/Nagad নম্বর">
+<label>Withdraw Amount</label>
+<input id="withdrawAmount" type="number" min="1" placeholder="Amount">
+<button class="btn withdraw-btn action-btn" onclick="submitWithdraw()">Withdraw Request পাঠান</button>
+<div id="withdrawMessage" class="notice" style="display:none"></div>
 </div>
-
 </div>
-
-</div>
-
 
 <footer>
-
-<strong>
-JR Earning Corner
-</strong>
-
-<p>
-অনলাইন কাজ ও বৈধ ডিজিটাল সেবা
-</p>
-
-<p>
-© 2026 All Rights Reserved
-</p>
-
+<strong>JR Earning Corner</strong>
+<p>অনলাইন কাজ ও বৈধ ডিজিটাল সেবা</p>
+<p>© 2026 All Rights Reserved</p>
 </footer>
 
-
-<!-- FIREBASE -->
-
 <script type="module">
+import {initializeApp} from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
+import {getAuth,createUserWithEmailAndPassword,signInWithEmailAndPassword,onAuthStateChanged,signOut} from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
+import {getFirestore,doc,setDoc,serverTimestamp,getDoc,getDocs,collection,addDoc} from "https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore.js";
 
-import { initializeApp }
-from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
-
-
-import {
-
-getAuth,
-createUserWithEmailAndPassword,
-signInWithEmailAndPassword,
-onAuthStateChanged,
-signOut
-
-}
-from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
-
-
-import {
-
-getFirestore,
-doc,
-setDoc,
-serverTimestamp,
-getDoc,
-getDocs,
-collection,
-addDoc
-
-}
-from "https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore.js";
-
-
-const firebaseConfig = {
-
+const firebaseConfig={
 apiKey:"AIzaSyDEtGNYqpRavpfMNMWdgq7MjOVRWA0Y3ew",
-
 authDomain:"jr-earning-corner.firebaseapp.com",
-
 projectId:"jr-earning-corner",
-
 storageBucket:"jr-earning-corner.firebasestorage.app",
-
 messagingSenderId:"786921929161",
-
 appId:"1:786921929161:web:c70d69701cb1fecd861018"
-
 };
 
+const app=initializeApp(firebaseConfig);
+const auth=getAuth(app);
+const db=getFirestore(app);
 
-const app = initializeApp(firebaseConfig);
+window.loginUser=async function(){
+const email=document.getElementById("email").value.trim();
+const password=document.getElementById("password").value;
+const message=document.getElementById("message");
+if(!email||!password){message.innerText="Email এবং Password দিন।";return;}
+try{await signInWithEmailAndPassword(auth,email,password);closeLogin();}
+catch(error){message.innerText="Login ব্যর্থ: "+error.message;}
+};
 
-const auth = getAuth(app);
-
-const db = getFirestore(app);
-
-
-/* LOGIN */
-
-window.loginUser = async function(){
-
-const email =
-document.getElementById("email").value.trim();
-
-const password =
-document.getElementById("password").value;
-
-const message =
-document.getElementById("message");
-
-
-if(!email || !password){
-
-message.innerText =
-"Email এবং Password দিন।";
-
-return;
-
-}
-
-
+window.registerUser=async function(){
+const email=document.getElementById("email").value.trim();
+const password=document.getElementById("password").value;
+const message=document.getElementById("message");
+if(!email||!password){message.innerText="Email এবং Password দিন।";return;}
+if(password.length<6){message.innerText="Password কমপক্ষে ৬ অক্ষরের হতে হবে।";return;}
 try{
-
-await signInWithEmailAndPassword(
-auth,
-email,
-password
-);
-
-message.innerText =
-"Login সফল হয়েছে ✅";
-
+const result=await createUserWithEmailAndPassword(auth,email,password);
+await setDoc(doc(db,"users",result.user.uid),{uid:result.user.uid,email:result.user.email,balance:0,createdAt:serverTimestamp()});
 closeLogin();
-
-}catch(error){
-
-message.innerText =
-"Login ব্যর্থ: " + error.message;
-
-}
-
+}catch(error){message.innerText="Register ব্যর্থ: "+error.message;}
 };
 
-
-/* REGISTER */
-
-window.registerUser = async function(){
-
-const email =
-document.getElementById("email").value.trim();
-
-const password =
-document.getElementById("password").value;
-
-const message =
-document.getElementById("message");
-
-
-if(!email || !password){
-
-message.innerText =
-"Email এবং Password দিন।";
-
-return;
-
-}
-
-
-if(password.length < 6){
-
-message.innerText =
-"Password কমপক্ষে ৬ অক্ষরের হতে হবে।";
-
-return;
-
-}
-
-
-try{
-
-const result =
-await createUserWithEmailAndPassword(
-auth,
-email,
-password
-);
-
-
-const user = result.user;
-
-
-await setDoc(
-doc(db,"users",user.uid),
-{
-
-uid:user.uid,
-
-email:user.email,
-
-balance:0,
-
-createdAt:serverTimestamp()
-
-}
-);
-
-
-message.innerText =
-"Account তৈরি হয়েছে ✅";
-
-closeLogin();
-
-
-}catch(error){
-
-message.innerText =
-"Register ব্যর্থ: " + error.message;
-
-}
-
-};
-
-
-/* USER STATUS */
-
-onAuthStateChanged(
-auth,
-async (user)=>{
-
-const loginBtn =
-document.getElementById("loginBtn");
-
-const logoutBtn =
-document.getElementById("logoutBtn");
-
-const userArea =
-document.getElementById("userArea");
-
-const userEmail =
-document.getElementById("userEmail");
-
+onAuthStateChanged(auth,async(user)=>{
+const loginBtn=document.getElementById("loginBtn");
+const logoutBtn=document.getElementById("logoutBtn");
+const userArea=document.getElementById("userArea");
 
 if(user){
-
-const adminDoc =
-await getDoc(
-doc(db,"admins",user.uid)
-);
-
-
+const adminDoc=await getDoc(doc(db,"admins",user.uid));
 if(adminDoc.exists()){
-
-document.getElementById(
-"adminPanel"
-).style.display="block";
-
-loadAdminUsers();
-
+document.getElementById("adminPanel").style.display="block";
+await loadAdminUsers();
+await loadDepositRequests();
+await loadWithdrawRequests();
 }else{
-
-document.getElementById(
-"adminPanel"
-).style.display="none";
-
+document.getElementById("adminPanel").style.display="none";
 }
 
-
-const userDoc =
-await getDoc(
-doc(db,"users",user.uid)
-);
-
-
+const userDoc=await getDoc(doc(db,"users",user.uid));
 if(userDoc.exists()){
-
-const data =
-userDoc.data();
-
-
-document.querySelector(
-".amount"
-).innerText =
-"৳" +
-Number(data.balance || 0)
-.toFixed(2);
-
+const data=userDoc.data();
+document.querySelector(".amount").innerText="৳"+Number(data.balance||0).toFixed(2);
 }
-
-
 loginBtn.style.display="none";
-
 logoutBtn.style.display="inline-block";
-
 userArea.style.display="block";
-
-userEmail.innerText=user.email;
-
-
+document.getElementById("userEmail").innerText=user.email;
 }else{
-
 loginBtn.style.display="inline-block";
-
 logoutBtn.style.display="none";
-
 userArea.style.display="none";
-
+document.getElementById("adminPanel").style.display="none";
 }
-
 });
 
+window.logout=async function(){await signOut(auth);};
 
-/* LOGOUT */
-
-window.logout = async function(){
-
-await signOut(auth);
-
-};
-
-
-/* LOGIN MODAL */
-
-window.openLogin=function(){
-
-document.getElementById(
-"loginModal"
-).style.display="flex";
-
-};
-
-
-window.closeLogin=function(){
-
-document.getElementById(
-"loginModal"
-).style.display="none";
-
-};
-
-
-/* DEPOSIT MODAL */
+window.openLogin=function(){document.getElementById("loginModal").style.display="flex";};
+window.closeLogin=function(){document.getElementById("loginModal").style.display="none";};
 
 window.openDeposit=function(){
-
-if(!auth.currentUser){
-
-alert("আগে Login করুন।");
-
-openLogin();
-
-return;
-
-}
-
-document.getElementById(
-"depositModal"
-).style.display="flex";
-
+if(!auth.currentUser){alert("আগে Login করুন।");openLogin();return;}
+document.getElementById("depositModal").style.display="flex";
 };
-
-
-window.closeDeposit=function(){
-
-document.getElementById(
-"depositModal"
-).style.display="none";
-
-};
-
-
-/* WITHDRAW MODAL */
+window.closeDeposit=function(){document.getElementById("depositModal").style.display="none";};
 
 window.openWithdraw=function(){
-
-if(!auth.currentUser){
-
-alert("আগে Login করুন।");
-
-openLogin();
-
-return;
-
-}
-
-document.getElementById(
-"withdrawModal"
-).style.display="flex";
-
+if(!auth.currentUser){alert("আগে Login করুন।");openLogin();return;}
+document.getElementById("withdrawModal").style.display="flex";
 };
+window.closeWithdraw=function(){document.getElementById("withdrawModal").style.display="none";};
 
-
-window.closeWithdraw=function(){
-
-document.getElementById(
-"withdrawModal"
-).style.display="none";
-
-};
-
-
-/* SUBMIT DEPOSIT */
-
-window.submitDeposit = async function(){
-
-const user =
-auth.currentUser;
-
-
-if(!user){
-
-alert("আগে Login করুন।");
-
-return;
-
-}
-
-
-const method =
-document.getElementById(
-"depositMethod"
-).value;
-
-
-const amount =
-Number(
-document.getElementById(
-"depositAmount"
-).value
-);
-
-
-const transactionId =
-document.getElementById(
-"depositTransactionId"
-).value.trim();
-
-
-const message =
-document.getElementById(
-"depositMessage"
-);
-
-
+window.submitDeposit=async function(){
+const user=auth.currentUser;
+if(!user){alert("আগে Login করুন।");return;}
+const method=document.getElementById("depositMethod").value;
+const amount=Number(document.getElementById("depositAmount").value);
+const transactionId=document.getElementById("depositTransactionId").value.trim();
+const message=document.getElementById("depositMessage");
 message.style.display="block";
 
-
-if(!amount || amount < 100){
-
-message.innerText =
-"Minimum Deposit ৳100।";
-
-return;
-
-}
-
-
-if(!transactionId){
-
-message.innerText =
-"Transaction ID দিন।";
-
-return;
-
-}
-
+if(!amount||amount<100){message.innerText="Minimum Deposit ৳100।";return;}
+if(!transactionId){message.innerText="Transaction ID দিন।";return;}
 
 try{
-
-await addDoc(
-collection(
-db,
-"depositRequests"
-),
-{
-
-userId:user.uid,
-
-email:user.email,
-
-amount:amount,
-
-method:method,
-
-transactionId:transactionId,
-
-status:"pending",
-
-createdAt:serverTimestamp()
-
-}
-);
-
-
-message.innerText =
-"Deposit Request সফলভাবে পাঠানো হয়েছে ✅ Admin যাচাই করার পর ব্যবস্থা নেওয়া হবে।";
-
-
-document.getElementById(
-"depositAmount"
-).value="";
-
-
-document.getElementById(
-"depositTransactionId"
-).value="";
-
-
-}catch(error){
-
-message.innerText =
-"Request পাঠানো যায়নি: " +
-error.message;
-
-}
-
+await addDoc(collection(db,"depositRequests"),{
+userId:user.uid,email:user.email,amount,method,transactionId,status:"pending",createdAt:serverTimestamp()
+});
+message.innerText="Deposit Request সফলভাবে পাঠানো হয়েছে ✅ Admin যাচাই করার পর ব্যবস্থা নেওয়া হবে।";
+document.getElementById("depositAmount").value="";
+document.getElementById("depositTransactionId").value="";
+}catch(error){message.innerText="Request পাঠানো যায়নি: "+error.message;}
 };
 
-
-/* SUBMIT WITHDRAW */
-
-window.submitWithdraw = async function(){
-
-const user =
-auth.currentUser;
-
-
-if(!user){
-
-alert("আগে Login করুন।");
-
-return;
-
-}
-
-
-const method =
-document.getElementById(
-"withdrawMethod"
-).value;
-
-
-const accountNumber =
-document.getElementById(
-"withdrawAccount"
-).value.trim();
-
-
-const amount =
-Number(
-document.getElementById(
-"withdrawAmount"
-).value
-);
-
-
-const message =
-document.getElementById(
-"withdrawMessage"
-);
-
-
+window.submitWithdraw=async function(){
+const user=auth.currentUser;
+if(!user){alert("আগে Login করুন।");return;}
+const method=document.getElementById("withdrawMethod").value;
+const accountNumber=document.getElementById("withdrawAccount").value.trim();
+const amount=Number(document.getElementById("withdrawAmount").value);
+const message=document.getElementById("withdrawMessage");
 message.style.display="block";
 
+if(!accountNumber){message.innerText="bKash/Nagad নম্বর দিন।";return;}
+if(!amount||amount<=0){message.innerText="সঠিক Amount দিন।";return;}
 
-if(!accountNumber){
-
-message.innerText =
-"bKash/Nagad নম্বর দিন।";
-
-return;
-
-}
-
-
-if(!amount || amount <= 0){
-
-message.innerText =
-"সঠিক Amount দিন।";
-
-return;
-
-}
-
-
-/* CHECK CURRENT BALANCE */
-
-const userDoc =
-await getDoc(
-doc(db,"users",user.uid)
-);
-
-
-if(!userDoc.exists()){
-
-message.innerText =
-"User account পাওয়া যায়নি।";
-
-return;
-
-}
-
-
-const data =
-userDoc.data();
-
-
-const balance =
-Number(data.balance || 0);
-
-
-if(amount > balance){
-
-message.innerText =
-"আপনার বর্তমান balance-এর চেয়ে বেশি Withdraw করা যাবে না।";
-
-return;
-
-}
-
+const userDoc=await getDoc(doc(db,"users",user.uid));
+if(!userDoc.exists()){message.innerText="User account পাওয়া যায়নি।";return;}
+const balance=Number(userDoc.data().balance||0);
+if(amount>balance){message.innerText="আপনার বর্তমান balance-এর চেয়ে বেশি Withdraw করা যাবে না।";return;}
 
 try{
-
-await addDoc(
-collection(
-db,
-"withdrawRequests"
-),
-{
-
-userId:user.uid,
-
-email:user.email,
-
-amount:amount,
-
-method:method,
-
-accountNumber:accountNumber,
-
-status:"pending",
-
-createdAt:serverTimestamp()
-
-}
-);
-
-
-message.innerText =
-"Withdraw Request সফলভাবে পাঠানো হয়েছে ✅ Admin যাচাই করার পর ব্যবস্থা নেওয়া হবে।";
-
-
-document.getElementById(
-"withdrawAmount"
-).value="";
-
-
-document.getElementById(
-"withdrawAccount"
-).value="";
-
-
-}catch(error){
-
-message.innerText =
-"Request পাঠানো যায়নি: " +
-error.message;
-
-}
-
+await addDoc(collection(db,"withdrawRequests"),{
+userId:user.uid,email:user.email,amount,method,accountNumber,status:"pending",createdAt:serverTimestamp()
+});
+message.innerText="Withdraw Request সফলভাবে পাঠানো হয়েছে ✅ Admin যাচাই করার পর ব্যবস্থা নেওয়া হবে।";
+document.getElementById("withdrawAmount").value="";
+document.getElementById("withdrawAccount").value="";
+}catch(error){message.innerText="Request পাঠানো যায়নি: "+error.message;}
 };
 
-
-/* COMPLETE TASK */
-
-window.completeTask =
-async function(taskId){
-
-const user =
-auth.currentUser;
-
-
-if(!user){
-
-alert("আগে Login করুন।");
-
-openLogin();
-
-return;
-
-}
-
-
+window.completeTask=async function(taskId){
+const user=auth.currentUser;
+if(!user){alert("আগে Login করুন।");openLogin();return;}
 try{
-
-const taskRef =
-doc(
-db,
-"users",
-user.uid,
-"completedTasks",
-taskId
-);
-
-
-const existingTask =
-await getDoc(taskRef);
-
-
-if(existingTask.exists()){
-
-alert(
-"এই Task আগে Complete করা হয়েছে।"
-);
-
-return;
-
-}
-
-
-await setDoc(
-taskRef,
-{
-
-taskId:taskId,
-
-completedAt:
-serverTimestamp()
-
-}
-);
-
-
-alert(
-"Task সম্পন্ন হিসেবে সংরক্ষণ হয়েছে ✅"
-);
-
-
-}catch(error){
-
-alert(
-"সমস্যা হয়েছে: " +
-error.message
-);
-
-}
-
+const taskRef=doc(db,"users",user.uid,"completedTasks",taskId);
+if((await getDoc(taskRef)).exists()){alert("এই Task আগে Complete করা হয়েছে।");return;}
+await setDoc(taskRef,{taskId,completedAt:serverTimestamp()});
+alert("Task সম্পন্ন হিসেবে সংরক্ষণ হয়েছে ✅");
+}catch(error){alert("সমস্যা হয়েছে: "+error.message);}
 };
-
-
-/* ADMIN USER LIST */
 
 async function loadAdminUsers(){
-
-const userList =
-document.getElementById(
-"adminUserList"
-);
-
-
-if(!userList) return;
-
-
-userList.innerHTML =
-"User list loading...";
-
-
+const list=document.getElementById("adminUserList");
+if(!list)return;
+list.innerHTML="User list loading...";
 try{
-
-const usersSnapshot =
-await getDocs(
-collection(db,"users")
-);
-
-
-if(usersSnapshot.empty){
-
-userList.innerHTML =
-"কোনো user পাওয়া যায়নি।";
-
-return;
-
-}
-
-
-userList.innerHTML="";
-
-
-usersSnapshot.forEach(
-(userDoc)=>{
-
-const data =
-userDoc.data();
-
-
-const div =
-document.createElement("div");
-
-
+const snapshot=await getDocs(collection(db,"users"));
+if(snapshot.empty){list.innerHTML="কোনো user পাওয়া যায়নি।";return;}
+list.innerHTML="";
+snapshot.forEach(userDoc=>{
+const data=userDoc.data();
+const div=document.createElement("div");
 div.className="box";
-
-
-div.innerHTML=`
-
-<strong>User UID:</strong>
-${userDoc.id}
-
-<br>
-
-<strong>Email:</strong>
-${data.email || "নেই"}
-
-<br>
-
-<strong>Balance:</strong>
-৳${Number(data.balance || 0).toFixed(2)}
-
-`;
-
-
-userList.appendChild(div);
-
-}
-);
-
-
-}catch(error){
-
-userList.innerHTML =
-"User list load করা যায়নি: " +
-error.message;
-
+div.innerHTML=`<strong>User UID:</strong> ${userDoc.id}<br><strong>Email:</strong> ${data.email||"নেই"}<br><strong>Balance:</strong> ৳${Number(data.balance||0).toFixed(2)}`;
+list.appendChild(div);
+});
+}catch(error){list.innerHTML="User list load করা যায়নি: "+error.message;}
 }
 
+async function loadDepositRequests(){
+const list=document.getElementById("depositRequestList");
+if(!list)return;
+list.innerHTML="Deposit requests loading...";
+try{
+const snapshot=await getDocs(collection(db,"depositRequests"));
+if(snapshot.empty){list.innerHTML="কোনো Deposit Request নেই।";return;}
+list.innerHTML="";
+snapshot.forEach(requestDoc=>{
+const data=requestDoc.data();
+const div=document.createElement("div");
+div.className="box";
+div.innerHTML=`<strong>Amount:</strong> ৳${data.amount||0}<br><strong>Method:</strong> ${data.method||"নেই"}<br><strong>Transaction ID:</strong> ${data.transactionId||"নেই"}<br><strong>Status:</strong> ${data.status||"pending"}<br><strong>User ID:</strong> ${data.userId||"নেই"}<br><strong>Email:</strong> ${data.email||"নেই"}`;
+list.appendChild(div);
+});
+}catch(error){list.innerHTML="Deposit requests load করা যায়নি: "+error.message;}
 }
 
+async function loadWithdrawRequests(){
+const list=document.getElementById("withdrawRequestList");
+if(!list)return;
+list.innerHTML="Withdraw requests loading...";
+try{
+const snapshot=await getDocs(collection(db,"withdrawRequests"));
+if(snapshot.empty){list.innerHTML="কোনো Withdraw Request নেই।";return;}
+list.innerHTML="";
+snapshot.forEach(requestDoc=>{
+const data=requestDoc.data();
+const div=document.createElement("div");
+div.className="box";
+div.innerHTML=`<strong>Amount:</strong> ৳${data.amount||0}<br><strong>Method:</strong> ${data.method||"নেই"}<br><strong>Account:</strong> ${data.accountNumber||"নেই"}<br><strong>Status:</strong> ${data.status||"pending"}<br><strong>User ID:</strong> ${data.userId||"নেই"}<br><strong>Email:</strong> ${data.email||"নেই"}`;
+list.appendChild(div);
+});
+}catch(error){list.innerHTML="Withdraw requests load করা যায়নি: "+error.message;}
+}
 </script>
 
-
 <!-- ADMIN PANEL -->
-
-<div
-class="card"
-id="adminPanel"
-style="display:none;">
-
+<div class="card" id="adminPanel">
 <h2>🛠️ Admin Panel</h2>
-  
-  <div class="box" style="margin-top:20px;">
-  <h3>💳 Deposit Requests</h3>
-  <div id="depositRequestList">
-    Deposit requests loading...
-  </div>
-  </div>
 
+<div class="box">
+<h3>💳 Deposit Requests</h3>
+<div id="depositRequestList">Deposit requests loading...</div>
+</div>
 
-<div
-class="box"
-style="margin-top:20px;">
+<div class="box">
+<h3>💰 Withdraw Requests</h3>
+<div id="withdrawRequestList">Withdraw requests loading...</div>
+</div>
 
+<div class="box">
 <h3>👥 User List</h3>
-
-<div id="adminUserList">
-User list loading...
+<div id="adminUserList">User list loading...</div>
 </div>
 
+<p>শুধু অনুমোদিত Admin account-এর জন্য।</p>
+<div class="notice">✅ Admin access পাওয়া গেছে।</div>
+
+<h3>📋 Task Management</h3>
+<div class="box"><strong>Task #001</strong> — Reward ৳10</div>
+<div class="box"><strong>Task #002</strong> — Reward ৳20</div>
+<div class="box"><strong>Task #003</strong> — Reward ৳30</div>
 </div>
-
-
-<p>
-শুধু অনুমোদিত Admin account-এর জন্য।
-</p>
-
-
-<div class="notice">
-
-✅ Admin access পাওয়া গেছে।
-
-</div>
-
-
-<h3 style="margin-top:20px;">
-📋 Task Management
-</h3>
-
-
-<div
-class="box"
-style="margin-top:10px;">
-
-<p>
-<strong>Task #001</strong>
-— Reward ৳10
-</p>
-
-</div>
-
-
-<div
-class="box"
-style="margin-top:10px;">
-
-<p>
-<strong>Task #002</strong>
-— Reward ৳20
-</p>
-
-</div>
-
-
-<div
-class="box"
-style="margin-top:10px;">
-
-<p>
-<strong>Task #003</strong>
-— Reward ৳30
-</p>
-
-</div>
-
-</div>
-
 
 </body>
-                   </html>
+</html>
